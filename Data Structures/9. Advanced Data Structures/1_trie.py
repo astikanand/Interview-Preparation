@@ -51,7 +51,7 @@ class Trie:
                 break
         
         if(found_in_children):
-            print("Word = {} : Found {} times.\nSuggestions are:".format(word, current_node.counter))
+            print("Word = {} : Found {} times.".format(word, current_node.counter))
 
         return (found_in_children, current_node)
     
@@ -61,7 +61,9 @@ class Trie:
         if(found or word == "*"):
             if(word == "*"):
                 word = ""
+                
             suggestions = self.word_suggest_util(node, word, [])
+            print("Suggestions are:")
             for w in suggestions:
                 print(w, end=" ")
             print("\n")

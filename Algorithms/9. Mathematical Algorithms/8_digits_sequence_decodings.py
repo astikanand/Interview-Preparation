@@ -9,7 +9,7 @@ def count_digits_sequence_decodings(digits):
 
     # If the last digit is not 0, then last digit must add to the number of words.
     if(digits[-1]>'0'):
-        count += count_digits_sequence_decodings(digits[:-1])
+        count = count_digits_sequence_decodings(digits[:-1])
     
     # If the last two digits form a number smaller than or equal to 26, then consider last two digits and recur
     if(digits[-2]=='1' or (digits[-2]=='2' and digits[-1]<='6')):
@@ -62,3 +62,6 @@ print(count_digits_sequence_decodings_DP('121'))
 
 print("Example-3: count_digits_sequence_decodings_DP('1234')")
 print(count_digits_sequence_decodings_DP('1234'))
+
+print("Example-3: count_digits_sequence_decodings_DP('1234121')")
+print(count_digits_sequence_decodings_DP('1234121'))
