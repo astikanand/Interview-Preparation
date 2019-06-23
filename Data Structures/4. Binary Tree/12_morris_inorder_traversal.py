@@ -1,26 +1,19 @@
-# A binary tree node
 class Node:
-     
-    # Constructor to create a new node
-    def __init__(self, data):
-        self.data = data 
+    def __init__(self, key):
         self.left = None
         self.right = None
+        self.val = key
 
 
-# Iterative function for inorder tree traversal
-def MorrisTraversal(root):
-     
-    # Set current to root of binary tree
+def morris_inorder_traversal(root):
     current = root 
      
     while(current is not None):
-         
         if current.left is None:
-            print(current.data)
+            print(current.val, end=" ")
             current = current.right
         else:
-            #Find the inorder predecessor of current
+            # Find the inorder predecessor of current
             pre = current.left
             while(pre.right is not None and pre.right != current):
                 pre = pre.right
@@ -34,22 +27,15 @@ def MorrisTraversal(root):
             # original tree i.e., fix the right child of predecssor
             else:
                 pre.right = None
-                print(current.data)
+                print(current.val, end=" ")
                 current = current.right
+    print()
 
-# Driver program to test above function
- 
-""" Constructed binary tree is
-            1
-          /   \
-         2     3
-       /  \
-      4    5   """
- 
+
 root = Node(1)
 root.left = Node(2)
 root.right = Node(3)
 root.left.left = Node(4)
 root.left.right = Node(5)
  
-MorrisTraversal(root)
+morris_inorder_traversal(root)

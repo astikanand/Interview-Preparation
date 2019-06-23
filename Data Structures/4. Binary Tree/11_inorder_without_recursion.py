@@ -1,49 +1,34 @@
-# A binary tree node
 class Node:
-     
-    # Constructor to create a new node
-    def __init__(self, data):
-        self.data = data 
+    def __init__(self, key):
         self.left = None
         self.right = None
+        self.val = key
  
-# Iterative function for inorder tree traversal
-def inOrder(root):
-     
-    # Set current to root of binary tree
+
+def inorder_without_recursion(root):
     current = root 
-    s = [] # initialze stack
+    stack = []
 
-    while(current is not None or len(s) > 0):
-
+    while(current is not None or len(stack) > 0):
         # Reach the left most Node of the current Node 
         while (current is not None):
-            # place pointer to a tree node on the stack before traversing the node's left subtree 
-            s.append(current)
+            # Place pointer to a tree node on the stack before traversing the node's left subtree 
+            stack.append(current)
             current = current.left 
         
         # Current must be NULL at this point
-        current = s.pop()
-        print(current.data, end=" ")
+        current = stack.pop()
+        print(current.val, end=" ")
          
         # We have visited the node and its left subtree. Now, it's right subtree's turn
         current = current.right 
-            
-     
- 
-# Driver program to test above function
- 
-""" Constructed binary tree is
-            1
-          /   \
-         2     3
-       /  \
-      4    5   """
- 
+    print()
+    
+
 root = Node(1)
 root.left = Node(2)
 root.right = Node(3)
 root.left.left = Node(4)
 root.left.right = Node(5)
  
-inOrder(root)
+inorder_without_recursion(root)

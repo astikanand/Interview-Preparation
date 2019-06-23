@@ -1,72 +1,61 @@
-# Python program to construct tree using inorder and 
-# preorder traversals
- 
-# A binary tree node 
 class Node:
-     
-    # Constructor to create a new node
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, key):
+        self.val = key
         self.left = None
         self.right = None
  
-"""Recursive function to construct binary of size len from
-   Inorder traversal in[] and Preorder traversal pre[].  Initial values
-   of inStrt and inEnd should be 0 and len -1.  The function doesn't
-   do any error checking for cases where inorder and preorder
-   do not form a tree """
-def buildTree(inOrder, preOrder, inStrt, inEnd):
-     
-    if (inStrt > inEnd):
+# Recursive function to construct binary of size len from 
+# Inorder traversal inorder[] and Preorder traversal preorder[].  
+# Initial values of inorder_start and inorder_end should be 0 and len -1.  
+# The function doesn't do any error checking for cases where inorder and preorder do not form a tree.
+def build_tree(inorder, preorder, inorder_start, inorder_end):
+    if (inorder_start > inorder_end):
         return None
  
-    # Pich current node from Preorder traversal using
-    # preIndex and increment preIndex
-    tNode = Node(preOrder[buildTree.preIndex])
-    buildTree.preIndex += 1
+    # Pick current node from Preorder traversal using preorder_index and increment preorder_index
+    # Create a new tree node with this picked element
+    tree_node = Node(preorder[build_tree.preorder_index])
+    build_tree.preorder_index += 1
  
     # If this node has no children then return
-    if inStrt == inEnd :
-        return tNode
+    if inorder_start == inorder_end :
+        return tree_node
  
     # Else find the index of this node in Inorder traversal
-    inIndex = search(inOrder, inStrt, inEnd, tNode.data)
+    inorder_index = search(inorder, inorder_start, inorder_end, tree_node.val)
      
-    # Using index in Inorder Traversal, construct left 
-    # and right subtrees
-    tNode.left = buildTree(inOrder, preOrder, inStrt, inIndex-1)
-    tNode.right = buildTree(inOrder, preOrder, inIndex+1, inEnd)
+    # Using index in Inorder Traversal, construct left and right subtrees
+    tree_node.left = build_tree(inorder, preorder, inorder_start, inorder_index-1)
+    tree_node.right = build_tree(inorder, preorder, inorder_index+1, inorder_end)
  
-    return tNode
- 
-# UTILITY FUNCTIONS
+    return tree_node
+
+
 # Function to find index of vaue in arr[start...end]
-# The function assumes that value is rpesent in inOrder[]
+# The function assumes that value is rpesent in inorder[]
 def search(arr, start, end, value):
     for i in range(start, end+1):
         if arr[i] == value:
             return i
  
-def printInorder(node):
+def inorder_traversal(node):
     if node is None:
         return
      
-    # first recur on left child
-    printInorder(node.left)
-     
-    #then print the data of node
-    print node.data,
- 
-    # now recur on right child
-    printInorder(node.right)
-     
+    inorder_traversal(node.left)
+    print (node.val, end=" ")
+    inorder_traversal(node.right)
+
+
+
 # Driver program to test above function
-inOrder = ['D', 'B' ,'E', 'A', 'F', 'C']
-preOrder = ['A', 'B', 'D', 'E', 'C', 'F']
-# Static variable preIndex
-buildTree.preIndex = 0
-root = buildTree(inOrder, preOrder, 0, len(inOrder)-1)
+inorder = ['D', 'B' ,'E', 'A', 'F', 'C']
+preorder = ['A', 'B', 'D', 'E', 'C', 'F']
+# Static variable preorder_index
+build_tree.preorder_index = 0
+root = build_tree(inorder, preorder, 0, len(inorder)-1)
  
 # Let us test the build tree by priting Inorder traversal
-print "Inorder traversal of the constructed tree is"
-printInorder(root)
+print ("Inorder traversal of the constructed tree is:")
+inorder_traversal(root)
+print()
