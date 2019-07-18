@@ -15,9 +15,6 @@ def print_nodes_at_k_distance(root, k):
         print_nodes_at_k_distance(root.left, k-1)
         print_nodes_at_k_distance(root.right, k-1)
 
-        
-
- 
  
 
 # Root

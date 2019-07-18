@@ -40,8 +40,6 @@ def max_width_binary_tree(root):
     
     return max_width
 
-    
-    
 
 
 # Root
