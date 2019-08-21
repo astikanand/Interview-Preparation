@@ -3,35 +3,18 @@ def check_balanced_bracket(expression):
     balanced = True
 
     for bracket in expression:
-        # If current is opening bracket push to stack
-        if (bracket=='(' or bracket=='[' or bracket=='{'):
-            stack.append(bracket)
-
-        # If current is not opening bracket, then it must be closing. So stack cannot be empty at this point. 
-        elif len(stack)==0:
+        # If current is opening bracket push closing bracket to stack
+        if bracket=='(':
+            stack.append(')')
+        elif bracket=='{':
+            stack.append('}')
+        elif bracket=='[':
+            stack.append(']')
+        
+        # If current is not opening bracket or the bracket doesnt match the top of stack -> Unbalanced
+        elif not stack or stack.pop() != bracket:
            balanced = False
            break
-        
-        # If current is ')' then top of stack can't be '{' or '['.
-        elif bracket == ')':
-            x = stack.pop()
-            if x=='{' or x=='[': 
-                balanced = False
-                break
-        
-        # If current is '}' then top of stack can't be '(' or '['.
-        elif bracket == '}': 
-            x = stack.pop()
-            if x=='(' or x=='[':
-                balanced = False
-                break
-        
-        # If current is ']' then top of stack can't be '(' or '{'.
-        elif bracket == ']': 
-            x = stack.pop()
-            if x =='(' or x == '{': 
-                balanced = False
-                break
     
     # If Stack is empty it is balanced else not balanced
     if stack or not balanced:
