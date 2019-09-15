@@ -12,6 +12,5 @@ def print_leaders(arr):
     print(leaders[::-1])
     
           
-print("Example-1: print_leaders([16, 17, 4, 3, 5, 2])")
-print_leaders([16, 17, 4, 3, 5, 2])
-
+print("Example-1: print_leaders([13, 15, 6, 7, 8, 3])")
+print_leaders([13, 15, 6, 7, 8, 3])

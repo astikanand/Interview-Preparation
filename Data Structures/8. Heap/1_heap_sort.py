@@ -2,39 +2,34 @@ def heap_sort(arr):
     n = len(arr) 
   
     # Build a maxheap. 
-    for i in range(n, -1, -1): 
-        heapify(arr, n, i) 
+    for i in range(n//2, -1, -1): 
+        max_heapify(arr, i, n) 
   
-    # One by one extract elements 
+    # One by one move larger elements to end and decrease the size
     for i in range(n-1, 0, -1): 
-        arr[i], arr[0] = arr[0], arr[i] # swap 
-        heapify(arr, i, 0)
+        arr[i], arr[0] = arr[0], arr[i] 
+        max_heapify(arr, 0, i)
     
     return arr
 
 
-def heapify(arr, n, i):
-    # Initialize largest as root 
-    largest = i 
+def max_heapify(arr, i, N):
+    left_child = 2*i+1
+    right_child = 2*i+2
 
-    # Childs: left = 2*i + 1  right = 2*i + 2   
-    l = 2*i+1
-    r = 2*i+2
-  
-    # If left child of root exists and is greater than root 
-    if l<n and arr[l]>arr[i]: 
-        largest = l 
-  
-    # If right child of root exists and is greater than root 
-    if r<n and arr[r]>arr[largest]: 
-        largest = r 
-  
-    # Change root, if needed 
-    if largest != i: 
-        arr[i],arr[largest] = arr[largest],arr[i]   # swap 
-  
-        # Heapify the root. 
-        heapify(arr, n, largest) 
+    # Find the largest of left_child, right_child and parent which is i.
+    if (left_child < N and arr[left_child] > arr[i]):
+        largest = left_child
+    else:
+        largest = i
+
+    if (right_child < N and arr[right_child] > arr[largest]):
+         largest = right_child
+
+    # If Parent is not largest, swap and apply max_heapify on child to propagate it down
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        max_heapify(arr, largest, N)
   
 
 

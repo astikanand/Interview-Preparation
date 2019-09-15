@@ -35,22 +35,29 @@ def diameter(root):
 
 
 # Root
-root = Node(50)
+root = Node(13)
 
 # 1st Level
-root.left      = Node(17)
-root.right     = Node(72)
+root.left      = Node(7)
+root.right     = Node(2)
 
 # 2nd Level
-root.left.left   = Node(12)
-root.left.right  = Node(23)
-root.right.left  = Node(54)
-root.right.right = Node(76)
+root.left.left   = Node(19)
+root.left.right  = Node(25)
 
 # 3rd Level
-root.left.left.left   = Node(9)
-root.left.left.right  = Node(14)
-root.left.right.right = Node(19)
-root.right.left.right = Node(67)
+root.left.left.left   = Node(11)
+root.left.left.right  = Node(28)
+root.left.right.right = Node(5)
+
+# 4th Level
+root.left.left.right.left = Node(35)
+root.left.right.right.left = Node(7)
+root.left.right.right.right = Node(9)
+
+# 5th Level
+root.left.left.right.left.right = Node(26)
+root.left.right.right.right.left = Node(17)
+
 
 print("Diameter of Tree: {}".format(diameter(root)))

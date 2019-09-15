@@ -40,7 +40,7 @@ class LinkedList:
             if(slow_ptr == fast_ptr):
                 # Loop detected start removing the loop using fast_ptr and slow_ptr at same speed 
                 # and starting slow_ptr from head and fast_ptr from meet point
-                slow =  self.head
+                slow_ptr =  self.head
                 while(slow_ptr.next != fast_ptr.next):
                     slow_ptr = slow_ptr.next
                     fast_ptr = fast_ptr.next

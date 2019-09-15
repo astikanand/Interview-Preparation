@@ -48,19 +48,24 @@ def left_view_binary_tree(root):
 
 
 # Root
-root = Node(4)
+root = Node(7)
 
 # 1st Level
-root.left      = Node(5)
-root.right     = Node(2)
+root.left      = Node(14)
+root.right     = Node(3)
 
 # 2nd Level
-root.right.left  = Node(3)
-root.right.right = Node(1)
+root.right.left  = Node(12)
+root.right.right = Node(5)
 
 # 3rd Level
-root.right.left.left  = Node(6)
-root.right.left.right = Node(7)
+root.right.left.left  = Node(8)
+root.right.left.right = Node(17)
+root.right.right.right = Node(4)
+
+# 4th Level
+root.right.right.right.left = Node(9)
+
 
 print("Left View of Binary Tree: ")
 left_view_binary_tree(root)
