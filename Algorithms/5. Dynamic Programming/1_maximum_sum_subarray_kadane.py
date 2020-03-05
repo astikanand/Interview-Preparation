@@ -28,5 +28,10 @@ print("Max: {} and Subarray: {}".format(max_sum, subarray))
 
 print("\nExample-2: maximum_sum_subarray_kadane(arr)")
 arr = [-13, -3, -25, -20, -3, -16, -23, -12, -5, -22, -15, -4, -7]
-ax_sum, subarray = maximum_sum_subarray_kadane(arr)
+max_sum, subarray = maximum_sum_subarray_kadane(arr)
+print("Max: {} and Subarray: {}".format(max_sum, subarray))
+
+print("\nExample-3: maximum_sum_subarray_kadane(arr)")
+arr = [-2, 1]
+max_sum, subarray = maximum_sum_subarray_kadane(arr)
 print("Max: {} and Subarray: {}".format(max_sum, subarray))
